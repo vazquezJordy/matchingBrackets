@@ -1,30 +1,25 @@
 let matchingBrackets = function (str) {
-var openAndClose = {'{':'}'};
-var stack = [];
-var text = [];
+    var openAndClose = {'{':'}'};
+    var stack = [];
+    str = str.replace(/[a-zA-Z0-9\s\?\\\*\&\^\$\#\@\!]/g, '')
 
-for (i=0; i < str.length; i++) {
+    for (i=0; i < str.length; i++) {
 
-    if (str[i] !== '{'|| '}') {
-        text.push(str[i])
+        if (str[i] === '{') {
+            stack.push(str[i]);
+            console.log(str[i])
+        }else {
+            let last = stack.pop();
+            if(str[i] != openAndClose[last]) {
+                console.log(str[i])
+                return false
+            };
+        }
     }
-
-    else if (str[i] === '{') {
-        stack.push(str[i]);
-        
-    }else {
-        let last = stack.pop();
-        if(str[i] != openAndClose[last]) {
-            return false
-        };
-    } 
-    
-}
-
-if (stack.length !==0) {
-    return false;
-}
-return true;
+    if (stack.length !==0) {
+        return false;
+    }
+    return true;
 }
 
 console.log(matchingBrackets('{asd{fasdf}'))
