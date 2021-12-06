@@ -1,6 +1,7 @@
 let matchingBrackets = function (str) {
     var openAndClose = {'{':'}'};
     var stack = [];
+    str = str.replace(/[a-zA-Z0-9\s\?\\\*\&\^\$\#\@\!]/g, '')
 
     for (i=0; i < str.length; i++) {
 
@@ -21,4 +22,4 @@ let matchingBrackets = function (str) {
     return true;
 }
 
-console.log(matchingBrackets('}{'))
+console.log(matchingBrackets('{asdfasdf}'))
